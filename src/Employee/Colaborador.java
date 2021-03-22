@@ -6,8 +6,8 @@ import java.util.List;
 public class Colaborador extends Employee{
     private List<String> programingLanguages;
 
-    public Colaborador (String id, String name, String lastname, int age){
-        super(id, name, lastname, age);
+    public Colaborador (String id, String name, String lastname, int age, String email){
+        super(id, name, lastname, age, email);
         programingLanguages = new ArrayList<String>();
     }
 

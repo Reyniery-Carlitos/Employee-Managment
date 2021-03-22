@@ -1,17 +1,21 @@
 package Employee;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Employee {
     private String id;
     private String name;
     private String lastname;
     private int age;
+    private String email;
 
     // Constructor Employee
-    public Employee(String id, String name, String lastname, int age){
+    public Employee(String id, String name, String lastname, int age, String email){
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.setAge(age);
+        this.setEmail(email);
     }
 
     // Metodo setId
@@ -58,7 +62,26 @@ public class Employee {
         return age;
     }
 
+    // Presentacion
     public String Presentation(){
         return this.id + " " + this.name + " " + this.lastname;
+    }
+
+    // Metodo setEmail con validador de correo.
+    public void setEmail(String email){
+        // Validacion del correo con expresiones regulares
+        this.email = email;
+        Pattern validar = Pattern.compile("^[A-Za-z0-9-_]+(\\.[A-Za-z0-9-_]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher matcher = validar.matcher(email);
+        if (matcher.find()){
+            System.out.println(name + ", el correo " + email + " ES VALIDO \n ---------------------");
+        } else {
+            System.out.println(name + ", el correo " + email + " NO ES VALIDO. \t por favor ingrese un correo valido \n ---------------------");
+        }
+    }
+
+    // Metodo getEmail
+    public String getEmail(){
+        return email;
     }
 }
